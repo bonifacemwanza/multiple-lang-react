@@ -1,70 +1,109 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Website Translation with Google Cloud Translation API
 
-## Available Scripts
+This project demonstrates how to integrate Google Cloud Translation API with a React application to translate the entire website content dynamically.
 
-In the project directory, you can run:
+**I will later convert this into a reusable npm package**
 
-### `npm start`
+## Table of Contents
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Components](#components)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Dynamically translates text content within React components.
+- Uses Google Cloud Translation API for accurate translations.
+- Context API and hooks for managing and applying translations.
+- Language switcher to change the language of the website content.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
+   \`\`\`sh
+   git clone https://github.com/bonifacemwanza/multiple-lang-react.git
+   cd react-website-translation
+   \`\`\`
 
-### `npm run build`
+2. Install dependencies:
+   \`\`\`sh
+   npm install
+   \`\`\`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Set up Google Cloud Translation API:
+   - Enable the Google Cloud Translation API in your Google Cloud project.
+   - Obtain your API key from the Google Cloud Console.
+   - Create a \`.env\` file in the root of the project and add your API key:
+     \`\`\`env
+     REACT_APP_API_KEY=your-google-cloud-translation-api-key
+     \`\`\`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Start the development server:
+   \`\`\`sh
+   npm start
+   \`\`\`
 
-### `npm run eject`
+2. Open your browser and navigate to \`http://localhost:3000\`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Components
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. TranslationContext.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Provides the translation context and functions for translating text using the Google Cloud Translation API.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. useTranslate.js
 
-## Learn More
+A custom hook that translates text based on the selected language.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3. withTranslation.js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+A higher-order component that wraps a component to translate its content dynamically.
 
-### Code Splitting
+### 4. CodingForBread.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+An example component that demonstrates how to use the \`withTranslation\` HOC.
 
-### Analyzing the Bundle Size
+### 5. LanguageSwitcher.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+A component for switching between different languages.
 
-### Making a Progressive Web App
+### Example
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+\`\`\`jsx
+// App.js
+import './App.css';
+import { LanguageSwitcher} from './components/index'
+import CodingForBread from './components/CodingForBread'
+import {TranslationProvider} from './providers/TranslationProvider'
+const App = () => {
 
-### Advanced Configuration
+  return (
+    <TranslationProvider>
+      <LanguageSwitcher />
+       <CodingForBread />
+    </TranslationProvider>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  );
+}
 
-### Deployment
+export default App;;
+\`\`\`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contributing
 
-### `npm run build` fails to minify
+Contributions are welcome! Please open an issue or submit a pull request for any changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Fork the repository.
+2. Create a new branch (\`git checkout -b feature-branch\`).
+3. Commit your changes (\`git commit -am 'Add new feature'\`).
+4. Push to the branch (\`git push origin feature-branch\`).
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
