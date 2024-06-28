@@ -68,7 +68,7 @@ A custom hook that translates text based on the selected language.
 
 A higher-order component that wraps a component to translate its content dynamically.
 
-### 4. CodingForBread.js
+### 4. ExampleComponent.js
 
 An example component that demonstrates how to use the `withTranslation` HOC.
 
@@ -82,14 +82,14 @@ A component for switching between different languages.
 // App.js
 import './App.css';
 import { LanguageSwitcher} from './components/index'
-import CodingForBread from './components/CodingForBread'
+import ExampleComponent from './components/ExampleComponent'
 import {TranslationProvider} from './providers/TranslationProvider'
 const App = () => {
 
   return (
     <TranslationProvider>
       <LanguageSwitcher />
-       <CodingForBread />
+       <ExampleComponent />
     </TranslationProvider>
 
   );
