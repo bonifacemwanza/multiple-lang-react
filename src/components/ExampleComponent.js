@@ -1,5 +1,5 @@
 import React from 'react';
-import { withTranslation } from './withTranslation';
+import { withTranslation } from 'react-google-multi-lang';
 const ExampleComponent = () => {
   return (
     <div className="page_wrapper">

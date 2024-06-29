@@ -13,7 +13,7 @@ export const TranslationProvider = ({ children }) => {
   const translateText = useCallback(
     async (text, targetedLang) => {
       const cacheKey = `${text}-${targetedLang}`;
-      if (translations[cacheKey]) {
+      if (translations && translations[cacheKey]) {
         return translations[cacheKey];
       }
 

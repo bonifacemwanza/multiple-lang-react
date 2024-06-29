@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTranslation } from '../providers/TranslationProvider';
+import { useTranslation } from 'react-google-multi-lang';
 
 export const LanguageSwitcher = () => {
   const { setLanguage } = useTranslation();
