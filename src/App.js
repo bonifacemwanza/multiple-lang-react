@@ -1,19 +1,24 @@
 import React from 'react';
-import './App.css';
-import { LanguageSwitcher } from './components/index';
-import ExampleComponent from './components/ExampleComponent';
-import { TranslationProvider } from 'react-google-multi-lang';
+import { Routes, Route } from 'react-router-dom';
+import Landing from './Pages/Landing';
+import Register from './Pages/Register';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import { UserContextProvider } from './Hooks/UserContext';
+import NavBar from './components/NavBar';
 
-
-
-const App = () => {
+function App() {
   return (
-    <TranslationProvider apiKey={process.env.REACT_APP_TRANSLATION_API} defaultLanguage="en">
-      <LanguageSwitcher />
-      <ExampleComponent />
-    </TranslationProvider>
+    <UserContextProvider>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </UserContextProvider>
   );
-};
-App.displayName = 'App';
+}
 
 export default App;
